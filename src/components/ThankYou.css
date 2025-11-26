@@ -1,0 +1,15 @@
+.thankyou-container {
+  text-align: center;
+  margin-top: 100px;
+  padding: 20px;
+}
+
+.thankyou-container h1 {
+  font-size: 32px;
+  color: #28a745;
+}
+
+.thankyou-container p {
+  font-size: 18px;
+  margin-top: 10px;
+}

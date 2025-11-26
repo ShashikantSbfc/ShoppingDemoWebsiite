@@ -1,24 +1,51 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import ProductList from "./components/ProductList";
+import Cart from "./components/Cart";
+import { CartProvider, CartContext } from "./context/CartContext";
+import "./components/ProductList.css";
+import "./components/Cart.css";
+import "./App.css";
+import { useContext } from "react";
+import Payment from "./components/Payment";
+import "./components/Payment.css";
+import ThankYou from "./components/ThankYou";
+import "./components/ThankYou.css";
+function Navbar() {
+  const { cart } = useContext(CartContext);
+
+  return (
+    <nav className="navbar">
+      <Link to="/" className="logo">Shopping Website</Link>
+
+      <Link to="/cart" className="cart-btn">
+        🛒 Cart+ 
+        <span className="cart-count">{cart.length}</span>
+      </Link>
+      
+    </nav>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <CartProvider>
+        <div className="app-container">
+
+          {/* NAVBAR */}
+          <Navbar />
+
+          {/* ROUTES */}
+          <Routes>
+            <Route path="/" element={<ProductList />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/payment" element={<Payment />} />
+            <Route path="/thank-you" element={<ThankYou />} />
+          </Routes>
+
+        </div>
+      </CartProvider>
+    </Router>
   );
 }
 
