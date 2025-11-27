@@ -1,4 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import {Routes, Route, Link } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 import ProductList from "./components/ProductList";
 import Cart from "./components/Cart";
 import { CartProvider, CartContext } from "./context/CartContext";
@@ -10,7 +11,8 @@ import Payment from "./components/Payment";
 import "./components/Payment.css";
 import ThankYou from "./components/ThankYou";
 import "./components/ThankYou.css";
-function Navbar() {
+function Navbar() 
+{
   const { cart } = useContext(CartContext);
 
   return (
